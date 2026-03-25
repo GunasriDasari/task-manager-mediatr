@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  color: #1e293b;
+}
+
+#root {
+  width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 40px 20px 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-input,
+.form-textarea,
+.control-input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.control-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.open-modal-btn,
+.expand-btn,
+.edit-btn,
+.save-btn,
+.cancel-btn,
+.toggle-btn,
+.delete-btn,
+.reset-btn,
+.empty-reset-btn,
+.view-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
+}
+
+.open-modal-btn:hover,
+.expand-btn:hover,
+.edit-btn:hover,
+.save-btn:hover,
+.cancel-btn:hover,
+.toggle-btn:hover,
+.delete-btn:hover,
+.reset-btn:hover,
+.empty-reset-btn:hover,
+.view-btn:hover {
+  transform: translateY(-1px);
+}
+
+.open-modal-btn {
+  background: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.18);
+}
+
+.open-modal-btn:hover {
+  background: #4338ca;
+}
+
+.expand-btn {
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+.edit-btn {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.edit-btn:hover {
+  background: #ddd6fe;
+}
+
+.save-btn {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.save-btn:hover {
+  background: #4338ca;
+}
+
+.cancel-btn {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.cancel-btn:hover {
+  background: #cbd5e1;
+}
+
+.toggle-btn {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.toggle-btn:hover {
+  background: #bfdbfe;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.delete-btn:hover {
+  background: #fecaca;
+}
+
+.reset-btn {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.reset-btn:hover {
+  background: #1e293b;
+}
+
+.view-btn {
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.view-btn:hover {
+  background: #f8fafc;
+}
+
+.active-view {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
+
+.open-modal-btn:disabled,
+.edit-btn:disabled,
+.save-btn:disabled,
+.cancel-btn:disabled,
+.toggle-btn:disabled,
+.delete-btn:disabled,
+.reset-btn:disabled,
+.expand-btn:disabled,
+.modal-close-btn:disabled,
+.view-btn:disabled,
+.empty-reset-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 24px 16px 40px;
+  }
+
+  .open-modal-btn,
+  .expand-btn,
+  .edit-btn,
+  .save-btn,
+  .cancel-btn,
+  .toggle-btn,
+  .delete-btn,
+  .reset-btn,
+  .empty-reset-btn,
+  .view-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,50 @@
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+.summary-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.summary-value {
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.summary-note {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.total-card {
+  background: linear-gradient(135deg, #ffffff, #f5f3ff);
+}
+
+.completed-card {
+  background: linear-gradient(135deg, #ffffff, #ecfdf5);
+}
+
+.pending-card {
+  background: linear-gradient(135deg, #ffffff, #fff7ed);
+}
+
+@media (max-width: 900px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+}

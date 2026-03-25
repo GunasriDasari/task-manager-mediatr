@@ -1,0 +1,28 @@
+.task-list {
+  gap: 20px;
+}
+
+.task-list.grid-view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+}
+
+.task-list.list-view {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .task-list.grid-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .task-list.grid-view,
+  .task-list.list-view {
+    grid-template-columns: 1fr;
+  }
+}

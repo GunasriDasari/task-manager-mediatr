@@ -1,0 +1,27 @@
+.task-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.count-text {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.range-text {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .task-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
