@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TaskManager.Services.Interfaces;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using TaskManager.Models.DTOs;
+using TaskManagerApi.Features.Tasks.Queries.GetTasks;
+using TaskManagerApi.Features.Tasks.Queries.GetTaskById;
+using TaskManagerApi.Features.Tasks.Commands.CreateTask;
+using TaskManagerApi.Features.Tasks.Commands.UpdateTask;
+using TaskManagerApi.Features.Tasks.Commands.DeleteTask;
 
 namespace TaskManagerApi.Controllers
 {
@@ -9,17 +14,18 @@ namespace TaskManagerApi.Controllers
     public class TasksController : ControllerBase
     {
         private readonly ILogger<TasksController> _logger;
-        private readonly  ITaskService _service;
-        public TasksController(ILogger<TasksController> logger, ITaskService service)
+        private readonly IMediator _mediator;
+        public TasksController(ILogger<TasksController> logger, IMediator mediator)
         {
             _logger = logger;
-            _service = service;
+            _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetTasks(bool? isCompleted, string? search, string? sortBy, int pageNumber = 1, int pageSize = 10)
         {
-            var result = await _service.GetTasksAsync(isCompleted, search, sortBy, pageNumber, pageSize);
+            var query = new GetTasksQuery(isCompleted, search, sortBy, pageNumber, pageSize);
+            var result = await _mediator.Send(query);
             return Ok(result);
         }
 
@@ -27,7 +33,8 @@ namespace TaskManagerApi.Controllers
         public async Task<IActionResult> GetTaskById(int id)
         {
 
-            var task = await _service.GetTaskByIdAsync(id);
+            var query = new GetTaskByIdQuery(id);
+            var task = await _mediator.Send(query);
 
             if (task == null)
                 return NotFound();
@@ -38,7 +45,8 @@ namespace TaskManagerApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTask(CreateTaskDto dto)
         {
-            var result = await _service.CreateTaskAsync(dto);
+            var command = new CreateTaskCommand(dto.Title, dto.Description, dto.IsCompleted);
+            var result = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetTaskById), new {id = result.Id}, result);
         }
@@ -46,7 +54,8 @@ namespace TaskManagerApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, UpdateTaskDto dto)
         {
-            var updated = await _service.UpdateTaskAsync(id, dto);
+            var command = new UpdateTaskCommand(id, dto.Title, dto.Description, dto.IsCompleted);
+            var updated = await _mediator.Send(command);
 
             if(!updated)
                 return NotFound();
@@ -57,7 +66,8 @@ namespace TaskManagerApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
-            var deleted = await _service.DeleteTaskAsync(id);
+            var command = new DeleteTaskCommand(id);
+            var deleted = await _mediator.Send(command);
 
             if(!deleted)
                 return NotFound();
